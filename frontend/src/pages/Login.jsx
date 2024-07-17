@@ -8,8 +8,6 @@ function Login() {
 	const [formData, setFormData] = useState({
 		name: '',
 		email: '',
-		password: '',
-		password2: '',
 	});
 
 	const { email, password } = formData;
@@ -58,7 +56,8 @@ function Login() {
 							value={email}
 							onChange={onChange}
 							placeholder="Enter your email"
-							required></input>
+							required
+						/>
 					</div>
 					<div className="form-group">
 						<input
@@ -69,7 +68,8 @@ function Login() {
 							value={password}
 							onChange={onChange}
 							placeholder="Enter password"
-							required></input>
+							required
+						/>
 					</div>
 					<div className="form-group">
 						<button className="btn btn-block">Submit</button>

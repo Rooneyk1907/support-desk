@@ -24,14 +24,14 @@ const registerUser = asyncHandler(async (req, res) => {
 		throw new Error('User already exists');
 	}
 
-	// Has password
+	// Hash password
 	const salt = await bcrypt.genSalt(10);
 	const hashedPassword = await bcrypt.hash(password, salt);
 
-	// Create User
+	// Create user
 	const user = await User.create({
-		name,
-		email,
+		name: name,
+		email: email,
 		password: hashedPassword,
 	});
 
@@ -44,7 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
 		});
 	} else {
 		res.status(400);
-		throw new Error('Invalid user data');
+		throw new error('Invalid user data');
 	}
 });
 
@@ -59,10 +59,10 @@ const loginUser = asyncHandler(async (req, res) => {
 	// Check user and passwords match
 	if (user && (await bcrypt.compare(password, user.password))) {
 		res.status(200).json({
-			id: user.id,
+			_id: user._id,
 			name: user.name,
 			email: user.email,
-			token: generateToken(user.id),
+			token: generateToken(user._id),
 		});
 	} else {
 		res.status(401);
@@ -70,17 +70,16 @@ const loginUser = asyncHandler(async (req, res) => {
 	}
 });
 
-// @desc	Get current User
-// @route	/api/users/me
-// @access	Private
-
+// @desc    Get current user
+// @route   /api/users/me
+// @access  Private
 const getMe = asyncHandler(async (req, res) => {
 	const user = {
-		id: req.user.id,
-		name: req.user.name,
+		_id: req.user._id,
 		email: req.user.email,
+		name: req.user.name,
 	};
-	res.status(200).json(req.user);
+	res.status(200).json(user);
 });
 
 // Generate token

@@ -8,7 +8,7 @@ import Register from './pages/Register';
 
 function App() {
 	return (
-		<>
+		<div>
 			<Router>
 				<div className="container">
 					<Header />
@@ -29,7 +29,7 @@ function App() {
 				</div>
 			</Router>
 			<ToastContainer />
-		</>
+		</div>
 	);
 }
 

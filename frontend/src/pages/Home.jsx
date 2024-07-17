@@ -4,7 +4,7 @@ import React from 'react';
 
 function Home() {
 	return (
-		<>
+		<div>
 			<section className="heading">
 				<h1>What do you need help with?</h1>
 				<p>Please choose from an option below:</p>
@@ -19,7 +19,7 @@ function Home() {
 				className="btn btn-block">
 				<FaTicketAlt /> View My Tickets
 			</Link>
-		</>
+		</div>
 	);
 }
 
