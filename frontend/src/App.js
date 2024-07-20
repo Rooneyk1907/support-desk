@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import NewTicket from './pages/NewTicket';
 import Tickets from './pages/Tickets';
+import Ticket from './pages/Ticket';
 
 function App() {
 	return (
@@ -42,6 +43,14 @@ function App() {
 							<Route
 								path="/tickets"
 								element={<Tickets />}
+							/>
+						</Route>
+						<Route //!THIS IS HOW YOU NEST A PRIVATE ROUTE
+							path="/ticket/:ticketId"
+							element={<PrivateRoute />}>
+							<Route
+								path="/ticket/:ticketId"
+								element={<Ticket />}
 							/>
 						</Route>
 					</Routes>
